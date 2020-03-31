@@ -5,7 +5,7 @@ app = flask.Flask(__name__)
 users = {
 	"Envy" : [
 		"Envy",
-		hash("cfad44646")
+		hash("12345")
 	]
 }
 
