@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Välkommen till NTI Södertörn! </title>
+
+    <!-- Bootstrap css and regular css links -->
+    <!-- JS links in case they are needed -->
+
+    <link rel="stylesheet" href="{{ url_for("static",filename="index.css")}}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Links for all fonts used -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E"> </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <script>
+    //Script for the navigation dropdown function
+    function toggleDropdown (e) {
+      const _d = $(e.target).closest('.dropdown'),
+        _m = $('.dropdown-menu', _d);
+      setTimeout(function(){
+        const shouldOpen = e.type !== 'click' && _d.is(':hover');
+        _m.toggleClass('show', shouldOpen);
+        _d.toggleClass('show', shouldOpen);
+        $('[data-toggle="dropdown"]', _d).attr('aria-expanded', shouldOpen);
+      }, e.type === 'mouseleave' ? 300 : 0);
+    }
+
+    $('body')
+      .on('mouseenter mouseleave','.dropdown',toggleDropdown)
+      .on('click', '.dropdown-menu a', toggleDropdown);
+
+    </script>
+
+  <!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" style="font-size: 30px; font-family: 'Fira Code', monospace;" href="{{url_for("main")}}"> NTI Gymnasiet Södertörn </a>
+    <img src="static/logo.png" alt="logo" style="width:40px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active" style="font-family: 'Fira Code', monospace;">
+          <a class="nav-link" href="{{url_for("main")}}"> Hem
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+        <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Klasserna
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white; color: black;">
+          <a class="dropdown-item" href="http://localhost:5000/teks" style="background-color: white; color: black;"> 17 TEK S </a>
+          <a class="dropdown-item" href="http://localhost:5000/tekcs" style="background-color: white; color: black;"> 17 TEK CS </a>
+          <a class="dropdown-item" href="http://localhost:5000/tekdm" style="background-color: white; color: black;"> 17 TEK DM </a>
+        </li>
+        <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+        <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          För lärare
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white; color: black;">
+          <a class="dropdown-item" href="login.html" style="background-color: white; color: black;"> Logga in </a>
+          <a class="dropdown-item" href="registrera.html" style="background-color: white; color: black;"> Registrera dig </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- All the content of the page is stored here, done for better functionality-->
+  <div id="container">
+    <div class="header">
+  <h2>Blog Name</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+    </div>
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <div class="fakeimg" style="height:100px;">Image</div>
+      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+    </div>
+    <div class="card">
+      <h3>Popular Post</h3>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div>
+    </div>
+    <div class="card">
+      <h3>Follow Me</h3>
+      <p>Some text..</p>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <!-- Footer at the bottom of the page -->
+    <footer class="mainfooter" role="contentinfo">
+      <div class="footer-middle">
+      <div class="container">
+        <img src="static/logo.png" alt="logo" style="width:100px; float: right;">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <!--Column1-->
+            <div class="footer-pad">
+              <h4 style="font-family: 'Fira Code', monospace";> Om NTI Gymnasiet Södertörn </h4>
+              <ul class="list-unstyled" style="font-family: 'Cinzel Decorative', cursive;">
+                <li><a href="index.html" style="font-family: 'Fira Code', monospace;"> Hem </a></li>
+                <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+                <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Klasser
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white; color: black;">
+                  <a class="dropdown-item" href="http://localhost:5000/teks" style="background-color: white; color: black;"> 17 TEK S </a>
+                  <a class="dropdown-item" href="http://localhost:5000/tekcs" style="background-color: white; color: black;"> 17 TEK CS </a>
+                  <a class="dropdown-item" href="http://localhost:5000/tekdm" style="background-color: white; color: black;"> 17 TEK DM </a>
+                </li>
+                <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+                <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  För lärare
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white; color: black;">
+                  <a class="dropdown-item" href="login.html" style="background-color: white; color: black;"> Logga in </a>
+                  <a class="dropdown-item" href="registrera.html" style="background-color: white; color: black;"> Registrera dig </a>
+                </li>
+                <li><a href="register.html" style="font-family: 'Fira Code', monospace;" > Mer om teknik! </a></li>
+              </ul>
+            </div>
+          </div>
+
+</div>
+</div>
+</div>
+</footer>
+  </body>
+</html>

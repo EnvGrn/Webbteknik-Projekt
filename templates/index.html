@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title> Välkommen till NTI Södertörn! </title>
+
+    <!-- Bootstrap css and regular css links -->
+    <!-- JS links in case they are needed -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for("static",filename="index.css")}}">
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Links for all fonts used -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E"> </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </head>
+
+  <body>
+
+    <script>
+    //Script for the navigation dropdown function
+    function toggleDropdown (e) {
+      const _d = $(e.target).closest('.dropdown'),
+        _m = $('.dropdown-menu', _d);
+      setTimeout(function(){
+        const shouldOpen = e.type !== 'click' && _d.is(':hover');
+        _m.toggleClass('show', shouldOpen);
+        _d.toggleClass('show', shouldOpen);
+        $('[data-toggle="dropdown"]', _d).attr('aria-expanded', shouldOpen);
+      }, e.type === 'mouseleave' ? 300 : 0);
+    }
+
+    $('body')
+      .on('mouseenter mouseleave','.dropdown',toggleDropdown)
+      .on('click', '.dropdown-menu a', toggleDropdown);
+
+    </script>
+
+  <!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg">
+
+    <a class="navbar-brand" style="font-size: 30px; font-family: 'Fira Code', monospace;" href="{{url_for("main")}}"> NTI Gymnasiet Södertörn </a>
+    <img src="static/logo.png" alt="logo" style="width:40px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active" style="font-family: 'Fira Code', monospace;">
+          <a class="nav-link" href="{{url_for("main")}}"> Hem
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+        <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Klasserna
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white;">
+          <a class="dropdown-item" href="http://localhost:5000/teks" style="background-color: white; color: black;"> 17 TEK S </a>
+          <a class="dropdown-item" href="http://localhost:5000/tekcs" style="background-color: white; color: black;"> 17 TEK CS </a>
+          <a class="dropdown-item" href="http://localhost:5000/tekdm" style="background-color: white; color: black;"> 17 TEK DM </a>
+        </li>
+        <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+        <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          För lärare
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white;">
+          <a class="dropdown-item" href="{{url_for("login")}}" style="background-color: white; color: black;"> Logga in </a>
+          <a class="dropdown-item" href="{{url_for("register")}}" style="background-color: white; color: black;"> Registrera dig </a>
+        </li>
+        <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+        <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Användbara länkar
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white;">
+          <a class="dropdown-item" href="https://mat.sodapps.io/" style="background-color: white; color: black;"> Mat </a>
+          <a class="dropdown-item" href="https://schema.sodapps.io/" style="background-color: white; color: black;"> Schema </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- All the content of the page is stored here, done for better functionality-->
+
+
+<!-- Empty space, needed for a visual effect-->
+<div class="empty-space">
+
+  </div>
+
+<section class="section">
+
+<!-- All the content of the element is stored here, done for better functionality-->
+
+
+<!-- Introduction to the school -->
+<div class="row">
+<div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="">
+<h3 class="mb-2 text-primary" style="font-family: 'Fira Code', monospace; font-size: 20px; text-decoration: none;"> Utbildning för framtiden </h3>
+<p style="font-family: 'Fira Code', monospace; color: white;"> NTI Gymnasiet har utbildningar inom tech, science, business och design. Alla förbereder dig på en värld i ständig förändring. Gör dig redo för framtiden! </p>
+</div>
+<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+<h3 class="mb-2 text-primary" style="font-family: 'Fira Code', monospace; font-size: 20px; text-decoration: none;"> Modern teknologi </h3>
+<p style="font-family: 'Fira Code', monospace; color: white;"> För att utbilda mot framtiden ser vi till att du har tillgång till modern teknik. Förutom klassiska labbsalar har vi makerspaces, AR/VR-rum, esport och mycket mer. </p>
+</div>
+<div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="200">
+<h3 class="mb-2 text-primary" style="font-family: 'Fira Code', monospace; font-size: 20px; text-decoration: none;"> Samarbeten </h3>
+<p style="font-family: 'Fira Code', monospace; color: white;"> Vi samarbetar med universitet och aktörer inom tech-branschen för att våra utbildningar ska vara relevanta och framtidssäkrade. Via våra partners kan vi t.ex. erbjuda praktik utomlands. </p>
+</div>
+<div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="300">
+<h3 class="mb-2 text-primary" style="font-family: 'Fira Code', monospace; font-size: 20px; text-decoration: none;"> Programmering och entrepenörskap </h3>
+<p style="font-family: 'Fira Code', monospace; color: white;"> Vi erbjuder programmering och entreprenörskap på alla våra program. Två viktiga förmågor för framtidens arbetsmarknad i ett digitalt samhälle. </p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Empty space, needed for a visual effect-->
+<div id="empty-space2">
+
+</div>
+
+<!-- Place for text. Alligned in the middle for visual purposes. -->
+  <div class="container">
+ <div id="midbar">
+
+ <h3 style="font-size:35px; color: #086fff; font-family:"font-family: 'Fira Code', monospace;> <strong> Här kommer den första online-anslagstavlan för NTI Gymnasiet Södertörn! </strong> </h3>
+
+ <hr class="style14">
+
+ <!-- Rules -->
+ <p id="mid_text" style="font-size:15px; font-family: 'Fira Code', monospace; color: black;" >
+
+   <p><strong> Det finns flera olika medel för att förmedla information för elever och lärare. SchoolSoft, Google Classroom, etc. De alla är användbara, men är de verkligen bra för kommunikation mellan lärare och elever? </strong></p>
+
+  <p> Alla dessa resurser finns för att det ska vara lättare för elever att få veta om vad som pågår i skolan, alltså om de viktigaste händelserna. Men det finns inget som ser till att det finns en bra kommunikation mellan elever och deras mentorer.</p>
+
+  <p>&ndash; Den här sidan är skapad för lärare som vill kunna förmedla information direkt till deras mentorselever utan att behöva skicka mejl som majoriteten kommer inte märka i tid. </p>
+
+  <p> <strong> Bekväm design </strong> </p>
+
+  <p> Man kan lätt hitta den klassen man behöver och börja sprida nyheter! Du som lärare behöver bara skapa ett konto och välja rätt klass. </p>
+
+  </p>
+</div>
+</div>
+
+
+      <!-- Empty space, needed for a visual effect. Needed a different empty space because the previous one wouldn't work as intended. -->
+      <div id="empty-space2">
+
+      </div>
+
+
+    <!-- Footer at the bottom of the page -->
+    <footer class="mainfooter" role="contentinfo">
+      <div class="footer-middle">
+        <img src="static/logo.png" alt="logo" style="width:100px; float: right;">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <!--Column1-->
+            <div class="footer-pad">
+              <h4 style="font-family: 'Fira Code', monospace";> Om NTI Gymnasiet Södertörn </h4>
+              <ul class="list-unstyled" style="font-family: 'Cinzel Decorative', cursive;">
+                <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+                <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Klasserna
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white;">
+                  <a class="dropdown-item" href="http://localhost:5000/teks" style="background-color: white; color: black;"> 17 TEK S </a>
+                  <a class="dropdown-item" href="http://localhost:5000/tekcs" style="background-color: white; color: black;"> 17 TEK CS </a>
+                  <a class="dropdown-item" href="http://localhost:5000/tekdm" style="background-color: white; color: black;"> 17 TEK DM </a>
+                </li>
+                <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+                <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  För lärare
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white;">
+                  <a class="dropdown-item" href="{{url_for("login")}}" style="background-color: white; color: black;"> Logga in </a>
+                  <a class="dropdown-item" href="{{url_for("register")}}" style="background-color: white; color: black;"> Registrera dig </a>
+                </li>
+                <li class="nav-item dropdown" style="font-family: 'Fira Code', monospace;">
+                <a class="nav-link dropdown-toggle"href="{{url_for("main")}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Användbara länkar
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: black; color: white;">
+                  <a class="dropdown-item" href="https://mat.sodapps.io/" style="background-color: white; color: black;"> Mat </a>
+                  <a class="dropdown-item" href="https://schema.sodapps.io/" style="background-color: white; color: black;"> Schema </a>
+              </ul>
+            </div>
+          </div>
+
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Empty space, needed for a visual effect. -->
+<div id="empty-space2">
+
+</div>
+
+</div>
+
+</body>
+</html>
