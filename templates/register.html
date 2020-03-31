@@ -92,14 +92,15 @@
   <!-- Button to open the modal -->
 
 
-  <form action="/register" method="get">
+  <form action="http://localhost:5000/register" method="post">
     <h1>Sign up</h1><br/>
 
     <span class="input"></span>
     <input type="email" name="email" placeholder="Email address" required />
     <span class="password"></span>
     <input type="password" name="password" id="password" placeholder="Password" title="Password min 6 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
-
+    <span class="password"></span>
+    <input type="password" name="password2" id="password" placeholder="Repeat password" title="Password min 6 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
     <button type="submit" value="Sign Up" title="Submit form" class="icon-arrow-right"><span>Sign up</span></button>
   </form>
 
